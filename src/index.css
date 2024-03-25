@@ -1,0 +1,256 @@
+@import url('https://fonts.googleapis.com/css2?family=Alata&family=Josefin+Sans:wght@300&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 0;
+  font-family: Alata,'Josefin Sans',-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margin */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin-block-end: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role='list'],
+ol[role='list'] {
+  list-style: none;
+}
+
+/* Set core root defaults */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+  color-scheme: dark;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.content-grid {
+  --padding-inline: 1rem;
+  --content-max-width: 1200px;
+  --breakout-max-width: 1920px;
+
+  --breakout-size: calc(
+    calc(var(--breakout-max-width) - var(--content-max-width)) / 2
+  );
+
+  display: grid;
+  grid-template-columns:
+    [full-width-start] minmax(var(--padding-inline), 1fr)
+    [breakout-start] minmax(0, var(--breakout-size))
+    [content-start] min(
+      100% - calc(var(--padding-inline) * 2),
+      var(--content-max-width)
+    )
+    [content-end]
+    minmax(0, var(--breakout-size)) [breakout-end]
+    minmax(var(--padding-inline), 1fr) [full-width-end];
+}
+
+.content-grid > :not(.breakout, .full-width),
+.full-width > :not(.breakout, .full-width) {
+  grid-column: content;
+}
+
+.content-grid > .breakout {
+  grid-column: breakout;
+}
+
+.content-grid > .full-width {
+  grid-column: full-width;
+
+  display: grid;
+  grid-template-columns: inherit;
+}
+
+img.full-width {
+  width: 100%;
+  max-height: 45vh;
+  object-fit: cover;
+}
+
+.grid-parent{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: 'a c'
+  'b b';
+  gap: 5rem 0;
+}
+
+.title{
+  grid-area: a;
+}
+
+.btn{
+  grid-area: c;
+  align-self: end;
+  justify-self: end;
+}
+
+
+.grid-child{
+  grid-area: b;
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(min(100%,250px),1fr));
+  gap: 1.5rem 2rem;
+}
+
+.card:hover img{
+  opacity: 0.4;
+}
+.card:hover h2{
+  color : black;
+}
+
+footer{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: 'd e'
+  'f g';
+  gap: 2rem;
+}
+
+footer>.logo{
+  grid-area: d;
+}
+
+footer>.social{
+  grid-area: e;
+  align-self: center;
+  justify-self: end;
+}
+footer>nav{
+  grid-area: f;
+}
+footer>.copyright{
+  grid-area: g;
+  justify-self: end;
+}
+
+
+.attribution {
+  font-size: 11px;
+  text-align: center;
+}
+
+.attribution a {
+  color: hsl(228, 45%, 44%);
+}
+
+@media (max-width:500px){
+  .grid-parent{
+    grid-template-columns: 1fr;
+    grid-template-areas: 'a'
+    'b'
+    'c';
+    gap: 3rem;
+  }
+
+  .btn{
+    justify-self: center;
+  }
+
+  footer{
+    grid-template-columns: 1fr;
+    grid-template-areas: 'd'
+    'f'
+    'e'
+    'g';
+    gap: 2rem;
+  }
+
+  footer>.social{
+    grid-area: e;
+    justify-self: center;
+    
+  }
+
+  footer>.social>img{
+    cursor: pointer;
+  }
+
+  footer>.copyright{
+    grid-area: g;
+    justify-self: center;
+  }
+
+  footer>nav{
+    grid-area: f;
+    justify-self: center;
+  }
+  
+  footer>.logo{
+    grid-area: d;
+    justify-self: center;
+  }
+}
+
