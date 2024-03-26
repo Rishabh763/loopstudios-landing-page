@@ -6,7 +6,7 @@ function About() {
          <div className="about-grid">
             <img className='interactive' src="/assets/images/desktop/image-interactive.jpg" alt="about image" />
 
-             <div className="text p-0 md:p-24 md:pb-0">
+             <div className="text p-0 md:px-16 md:py-16 md:pb-0">
                  <h2 className='text-5xl'>The leader in interactive VR</h2>
                  
                  <p>

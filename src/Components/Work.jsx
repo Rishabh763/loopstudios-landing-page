@@ -54,7 +54,7 @@ function Work() {
   ];
   return (
     <div className="grid-parent py-24">
-        <h1 className="text-6xl uppercase text-left font-light tracking-wider title">our creations</h1>
+        <h1 className=" uppercase text-left font-light tracking-wider title">our creations</h1>
         <button className="uppercase text-lg leading-tight tracking-[5px] px-8 py-2 border-black border-2 bg-white text-black hover:bg-black hover:text-white transition-colors btn">
           see all
         </button>
